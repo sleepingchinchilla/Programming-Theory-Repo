@@ -22,7 +22,7 @@ class Frog : Animal
         // set the voice to frog voice
     }
 
-    “// POLYMORPHISM
+    // POLYMORPHISM
     protected override void Jump()
     {
         playerRb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
