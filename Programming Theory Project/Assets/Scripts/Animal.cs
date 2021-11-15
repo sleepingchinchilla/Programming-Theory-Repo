@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract class Animal : MonoBehaviour
+public abstract class Animal : MonoBehaviour
 {
     private float rotationSpeed = 0.2f;
     private int XBoundary = 5;
@@ -17,23 +17,8 @@ abstract class Animal : MonoBehaviour
 
     protected float maximumSpeed { set; get; }
 
-    private string playerName;
-    public string PlayerName
-    {
-        get { return playerName; }
-        set
-        {
-            if (value != null && value.Length < 10)
-            {
-                playerName = value;
-            }
-            else
-            {
-                Debug.LogError("The name is too long or null");
-            }
+    private string playerName { set; get; }
 
-        }
-    }
     protected bool isOnGround { set; get; }
 
     private void Update()

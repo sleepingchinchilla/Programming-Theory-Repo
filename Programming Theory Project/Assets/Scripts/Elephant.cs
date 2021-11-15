@@ -5,7 +5,7 @@ using UnityEngine;
 class Elephant : Animal
 {
     const float elephantSpeed = 100.0f;
-    const float elephantJumpPower = 150.0f;
+    const float elephantJumpPower = 250.0f;
     const float elephantMaximumSpeed = 700;
     const float elephantJumpWaitTime = 0.2f;
     float timer = 0;
