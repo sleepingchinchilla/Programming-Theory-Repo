@@ -20,7 +20,7 @@ class Cat : Animal
         maximumSpeed = catMaximumSpeed;
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = catVoice;
-        // set the voice to frog voice
+        // set the voice 
     }
 
 

@@ -21,7 +21,7 @@ class Elephant : Animal
         maximumSpeed = elephantMaximumSpeed;
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = elephantVoice;
-        // set the voice to frog voice
+        // set the voice
     }
 
     private void FixedUpdate()

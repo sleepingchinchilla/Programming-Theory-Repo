@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 class Frog : Animal
 {
     const float frogSpeed = 2.0f;
@@ -21,7 +22,7 @@ class Frog : Animal
         // set the voice to frog voice
     }
 
-
+    “// POLYMORPHISM
     protected override void Jump()
     {
         playerRb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);

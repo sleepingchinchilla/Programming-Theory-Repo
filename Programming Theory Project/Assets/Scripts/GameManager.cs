@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
@@ -25,20 +25,18 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        switch (animal)
+        {
+            case "Frog":
+                chosenAnimal = animalPrefabs[0];
+                break;
+            case "Cat":
+                chosenAnimal = animalPrefabs[1];
+                break;
+            case "Elephant":
+                chosenAnimal = animalPrefabs[2];
+                break;
+        }
         SceneManager.LoadScene(1);
-
-        if(animal == "Frog")
-        {
-            chosenAnimal = animalPrefabs[0];
-        }
-        if (animal == "Cat")
-        {
-            chosenAnimal = animalPrefabs[1];
-        }
-        if (animal == "Elephant")
-        {
-            chosenAnimal = animalPrefabs[2];
-        }
-      
     }
 }

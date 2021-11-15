@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Animal : MonoBehaviour
 {
-    private float rotationSpeed = 0.2f;
+    private const float rotationSpeed = 0.2f;
     private int XBoundary = 5;
     private int ZBoundary = 2;
     //protected CharacterController controller { set; get; }
@@ -28,6 +28,7 @@ public abstract class Animal : MonoBehaviour
             isOnGround = false;
             Jump();
         }
+        // ABSTRACTION
         Move(); // check if keyboard buttons up or down was pushed and move
         checkForMaximumSpeed(); // breaks if object moves too fast
         forceBounds(); // check if inside the board
@@ -54,14 +55,8 @@ public abstract class Animal : MonoBehaviour
         bool insideXBounds = transform.position.x <= XBoundary && transform.position.x >= -XBoundary;
         bool insideYBounds = transform.position.z <= ZBoundary && transform.position.z >= -ZBoundary;
 
-        if (insideXBounds)
-        {
-            if (insideYBounds)
-            {
-                return true;
-            }
-        }
-        return false;
+        return insideXBounds && insideYBounds;
+            
     }
 
     private void forceBounds()

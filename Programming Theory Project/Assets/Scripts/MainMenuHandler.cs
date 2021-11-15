@@ -12,6 +12,7 @@ public class MainMenuHandler : MonoBehaviour
     private string playerName;
     public string PlayerName
     {
+        // ENCAPSULATION
         get { return playerName; }
         set
         {
