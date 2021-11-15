@@ -7,13 +7,17 @@ class Frog : Animal
     const float frogSpeed = 2.0f;
     const float frogJumpPower = 20.0f;
     const float frogMaximumSpeed = 4;
-    
+    public AudioClip frogVoice;
+
+
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>(); // automatically calls the setter
         speed = frogSpeed;
         jumpPower = frogJumpPower;
         maximumSpeed = frogMaximumSpeed;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = frogVoice;
         // set the voice to frog voice
     }
 
@@ -25,7 +29,7 @@ class Frog : Animal
     }
     protected override void GiveVoice()
     {
-        audioSource.PlayOneShot(voice);
+        audioSource.Play();
     }
 
 
