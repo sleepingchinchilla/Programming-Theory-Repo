@@ -4,9 +4,11 @@ using UnityEngine;
 
 public abstract class Animal : MonoBehaviour
 {
-    private const float rotationSpeed = 0.2f;
+    protected const float rotationSpeed = 2.0f;
     private int XBoundary = 5;
     private int ZBoundary = 2;
+    protected float verticalInput;
+    protected float horizontalInput;
     //protected CharacterController controller { set; get; }
     protected AudioClip voice { set; get; }
     protected AudioSource audioSource { set; get; }
@@ -28,10 +30,17 @@ public abstract class Animal : MonoBehaviour
             isOnGround = false;
             Jump();
         }
-        // ABSTRACTION
-        Move(); // check if keyboard buttons up or down was pushed and move
-        checkForMaximumSpeed(); // breaks if object moves too fast
+
+
+        GetInput();
         forceBounds(); // check if inside the board
+    }
+
+    private void FixedUpdate()
+    {// ABSTRACTION
+        Move(); // check if keyboard buttons up or down was pushed and move
+        // applying forced in fixed update while getting inputs in update will fix speed issue?
+        checkForMaximumSpeed(); // breaks if object moves too fast
     }
 
     protected abstract void Jump(); // different ways of jumping? different mechanics?
@@ -50,7 +59,7 @@ public abstract class Animal : MonoBehaviour
         }
     }
 
-    private bool isInsideBounds()
+    protected bool isInsideBounds()
     {
         bool insideXBounds = transform.position.x <= XBoundary && transform.position.x >= -XBoundary;
         bool insideYBounds = transform.position.z <= ZBoundary && transform.position.z >= -ZBoundary;
@@ -79,16 +88,22 @@ public abstract class Animal : MonoBehaviour
         }
     }
 
-    protected void Move()
+    protected virtual void Move()
     {
         if (isOnGround)
         {
             if (isInsideBounds())
             {
-                playerRb.AddRelativeForce(Vector3.forward * speed * Input.GetAxis("Vertical")); // they will have different speeds
+                playerRb.AddRelativeForce(Vector3.forward * speed * verticalInput); // they will have different speeds
             }
-            transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * rotationSpeed);
+            transform.Rotate(Vector3.up, horizontalInput * rotationSpeed);
         }
+    }
+
+    protected void GetInput()
+    {
+        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
     }
 
     private void checkForMaximumSpeed()

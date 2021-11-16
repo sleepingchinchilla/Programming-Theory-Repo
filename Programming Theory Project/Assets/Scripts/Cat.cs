@@ -4,9 +4,9 @@ using UnityEngine;
 
 class Cat : Animal
 {
-    const float catSpeed = 20.0f;
+    const float catSpeed = 200.0f;
     const float catJumpPower = 40.0f;
-    const float catMaximumSpeed = 40;
+    const float catMaximumSpeed = 400;
     const float catJumpWaitTime = 1;
     const float catJumpForwardMultiplier = 3;
     public AudioClip catVoice;

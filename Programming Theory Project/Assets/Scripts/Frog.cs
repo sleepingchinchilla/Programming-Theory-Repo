@@ -5,9 +5,9 @@ using UnityEngine;
 // INHERITANCE
 class Frog : Animal
 {
-    const float frogSpeed = 2.0f;
+    const float frogSpeed = 40.0f;
     const float frogJumpPower = 20.0f;
-    const float frogMaximumSpeed = 4;
+    const float frogMaximumSpeed = 80;
     public AudioClip frogVoice;
 
 

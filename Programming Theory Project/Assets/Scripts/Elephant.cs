@@ -4,9 +4,9 @@ using UnityEngine;
 
 class Elephant : Animal
 {
-    const float elephantSpeed = 100.0f;
+    const float elephantSpeed = 2000.0f;
     const float elephantJumpPower = 250.0f;
-    const float elephantMaximumSpeed = 700;
+    const float elephantMaximumSpeed = 14000;
     const float elephantJumpWaitTime = 0.2f;
     float timer = 0;
     //const float elephantJumpForwardMultiplier = 2;
@@ -22,11 +22,20 @@ class Elephant : Animal
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = elephantVoice;
         // set the voice
+        //
     }
 
-    private void FixedUpdate()
+    protected override void Move() //overriden to include new stomp functionality while other classes use basic version
     {
-        Stomp();
+        if (isOnGround)
+        {
+            if (isInsideBounds())
+            {
+                playerRb.AddRelativeForce(Vector3.forward * speed * verticalInput); // they will have different speeds
+            }
+            transform.Rotate(Vector3.up, horizontalInput * rotationSpeed);
+            Stomp();
+        }
     }
 
 
